@@ -1,6 +1,6 @@
 import {ReturningOptions} from 'sequelize';
 import {IIncludeOptions} from "./IIncludeOptions";
-import {Model} from "../models/Model";
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "BuildOptions" type definitions from:
@@ -22,5 +22,5 @@ export interface IBuildOptions extends ReturningOptions {
   /**
    * an array of include options - Used to build prefetched/included model instances. See `set`
    */
-  include?: Array<typeof Model | IIncludeOptions>;
+  include?: Array<ModelType<any> | IIncludeOptions>;
 }

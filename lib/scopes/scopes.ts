@@ -1,17 +1,17 @@
 import 'reflect-metadata';
-import {Model} from "../model/models/Model";
 import {deepAssign} from "../common/utils/object";
 import {IScopeOptions} from "./interfaces/IScopeOptions";
 import {IFindOptions} from "../model/interfaces/IFindOptions";
 import {IScopeFindOptions} from "./interfaces/IScopeFindOptions";
 import {inferAlias, resolveModelGetter} from '../model/models';
+import {ModelType} from "../model/types/ModelType";
 
 const SCOPES_KEY = 'sequelize:scopes';
 
 /**
  * Resolves scopes and adds them to the specified models
  */
-export function resolveScopes(models: Array<typeof Model>): void {
+export function resolveScopes(models: Array<ModelType<any>>): void {
   models.forEach(model => {
     const options = getScopeOptions(model.prototype);
 
@@ -46,7 +46,7 @@ export function getScopeOptions(target: any): IScopeOptions | undefined {
 /**
  * Resolves scope
  */
-function resolveScope(scopeName: string, model: typeof Model, options: IScopeFindOptions | Function | undefined): void {
+function resolveScope(scopeName: string, model: ModelType<any>, options: IScopeFindOptions | Function | undefined): void {
   resolveModelGetter(options);
   if (typeof options === 'function') {
     const fn: Function = options;

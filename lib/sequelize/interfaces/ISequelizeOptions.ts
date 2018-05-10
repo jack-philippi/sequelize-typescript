@@ -1,7 +1,6 @@
-import {Options} from 'sequelize';
-import {Model} from '../../model/models/Model';
+import {IBaseSequelizeOptions} from "./IBaseSequelizeOptions";
 
-export interface ISequelizeOptions extends Options {
+export interface ISequelizeOptions extends IBaseSequelizeOptions {
 
   /**
    * Name of database
@@ -17,12 +16,6 @@ export interface ISequelizeOptions extends Options {
    * Password for database user
    */
   password: string;
-
-  /**
-   * Path to models or actual models,
-   * which should be loaded for sequelize instance
-   */
-  models?: string[] | Array<typeof Model>;
 
   /**
    * Makes it possible to use sequelize for validation only

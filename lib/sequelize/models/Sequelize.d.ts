@@ -51,6 +51,7 @@ import {SequelizeOptions} from "../types/SequelizeOptions";
 import {Namespace} from 'continuation-local-storage';
 import {Hooks} from '../../hooks/models/Hooks';
 import {IQueryOptions} from '../interfaces/IQueryOptions';
+import {ModelType} from "../../model/types/ModelType";
 
 /**
  * Based on "Sequelize" type definitions from:
@@ -200,8 +201,8 @@ export declare class Sequelize extends Hooks {
    * simply as factory. This class should not be instantiated directly, it is created using sequelize.define,
    * and already created models can be loaded using sequelize.import
    */
-  Model: typeof Model;
-  static Model: typeof Model;
+  Model: ModelType<any>;
+  static Model: ModelType<any>;
 
   /**
    * A reference to the sequelize transaction class. Use this to access isolationLevels when creating a
@@ -229,7 +230,7 @@ export declare class Sequelize extends Hooks {
   /**
    * Defined models.
    */
-  models: { [name: string]: typeof Model };
+  models: { [name: string]: ModelType<any> };
 
   /**
    * Defined options.
@@ -422,14 +423,14 @@ export declare class Sequelize extends Hooks {
    */
   define<T extends Model<T>>(modelName: string,
                              attributes: DefineAttributes,
-                             options?: DefineOptions<T>): typeof Model;
+                             options?: DefineOptions<T>): ModelType<T>;
 
   /**
    * Fetch a Model which is already defined
    *
    * @param modelName The name of a model defined with Sequelize.define
    */
-  model<T extends Model<T>>(modelName: string): typeof Model;
+  model<T extends Model<T>>(modelName: string): ModelType<T>;
 
   /**
    * Checks whether a model with the given name is defined
@@ -456,7 +457,7 @@ export declare class Sequelize extends Hooks {
    */
   import<T extends Model<T>>(path: string,
                              defineFunction?: (sequelize: Sequelize, dataTypes: DataTypes) =>
-                               Model<T>): typeof Model;
+                               Model<T>): ModelType<T>;
 
   /**
    * Execute a query on the DB, with the posibility to bypass all the sequelize goodness.
@@ -648,6 +649,10 @@ export declare class Sequelize extends Hooks {
    */
   databaseVersion(): Promise<string>;
 
-  addModels(models: Array<typeof Model>): void;
+  /**
+   * Initializes passed models, so that either the static members(e.g. Model.find()) of the passed model
+   * or the static members of the repository model(sequelize.getRepository(Model).find()) can be used
+   */
+  addModels(models: Array<ModelType<any>>): void;
   addModels(modelPaths: string[]): void;
 }

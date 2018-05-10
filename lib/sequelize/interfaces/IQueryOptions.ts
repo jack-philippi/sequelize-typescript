@@ -1,5 +1,6 @@
 import {RetryOptions, ReturningOptions, SearchPathOptions} from 'sequelize';
 import {Model} from '../../model/models/Model';
+import {ModelType} from "../../model/types/ModelType";
 
 /**
  * Based on "QueryOptions" type definitions from:
@@ -68,7 +69,7 @@ export interface IQueryOptions extends SearchPathOptions, ReturningOptions {
   /**
    * A sequelize model used to build the returned model instances (used to be called callee)
    */
-  model?: typeof Model;
+  model?: ModelType<any>;
 
   /**
    * Set of flags that control when a query is automatically retried.

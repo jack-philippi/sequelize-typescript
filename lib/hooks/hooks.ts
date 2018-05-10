@@ -1,14 +1,14 @@
 import 'reflect-metadata';
-import {Model} from "../model/models/Model";
 import {ISequelizeHook} from "../sequelize/interfaces/ISequelizeHook";
 import {IHookOptions} from "./interfaces/IHookOptions";
+import {ModelType} from "../model/types/ModelType";
 
 const HOOKS_KEY = 'sequelize:hooks';
 
 /**
  * Installs hooks on the specified models
  */
-export function installHooks(models: Array<typeof Model>): void {
+export function installHooks(models: Array<ModelType<any>>): void {
   models.forEach(model => {
     const hooks = getHooks(model);
 
@@ -73,7 +73,7 @@ export function addHook(target: any, hookType: string, methodName: string, optio
 /**
  * Install a hook
  */
-function installHook(model: typeof Model, hook: ISequelizeHook): void {
+function installHook(model: ModelType<any>, hook: ISequelizeHook): void {
   if (hook.options && hook.options.name) {
     model.addHook(hook.hookType, hook.options.name, model[hook.methodName]);
     return;

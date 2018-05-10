@@ -8,6 +8,7 @@ import {deepAssign} from "../common/utils/object";
 import {getAssociationsByRelation} from "../associations/association";
 import {uniqueFilter} from "../common/utils/array";
 import {inferDataType} from '../sequelize/data-type';
+import {ModelType} from "./types/ModelType";
 
 const MODEL_NAME_KEY = 'sequelize:modelName';
 const ATTRIBUTES_KEY = 'sequelize:attributes';
@@ -154,7 +155,7 @@ export function getSequelizeTypeByDesignType(target: any, propertyName: string):
 /**
  * Determines models from value
  */
-export function getModels(arg: Array<typeof Model | string>): Array<typeof Model> {
+export function getModels(arg: Array<ModelType<any> | string>): Array<ModelType<any>> {
 
   if (arg && typeof arg[0] === 'string') {
 
@@ -185,7 +186,7 @@ export function getModels(arg: Array<typeof Model | string>): Array<typeof Model
       ;
   }
 
-  return arg as Array<typeof Model>;
+  return arg as Array<ModelType<any>>;
 }
 
 /**

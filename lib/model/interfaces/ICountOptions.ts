@@ -1,6 +1,6 @@
 import {LoggingOptions, SearchPathOptions, WhereOptions} from 'sequelize';
 import {IIncludeOptions} from './IIncludeOptions';
-import {Model} from '../models/Model';
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "CountOptions" type definitions from:
@@ -17,7 +17,7 @@ export interface ICountOptions<T> extends LoggingOptions, SearchPathOptions {
   /**
    * Include options. See `find` for details
    */
-  include?: Array<typeof Model | IIncludeOptions>;
+  include?: Array<ModelType<any> | IIncludeOptions>;
 
   /**
    * Apply COUNT(DISTINCT(col))

@@ -32,4 +32,4 @@ export {Model} from './models/Model';
 // types
 export {FilteredModelAttributes} from './types/FilteredModelAttributes';
 export {ModelClassGetter} from './types/ModelClassGetter';
-export {NonAbstractTypeOfModel} from './types/NonAbstractTypeOfModel';
+export {ModelType} from './types/ModelType';

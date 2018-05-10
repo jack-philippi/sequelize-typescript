@@ -144,7 +144,7 @@ export class ModelImpl extends _SeqModel {
    *
    * SEE DETAILS FOR ACTUAL FUNCTIONALITY ON DECLARATION FILE
    */
-  reload(options?: IFindOptions<typeof ModelImpl>): Promise<this> {
+  reload(options?: IFindOptions<any>): Promise<this> {
 
     return _SeqModel.prototype.reload.call(this, inferAlias(options, this));
   };

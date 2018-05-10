@@ -1,4 +1,4 @@
-import {Model} from '../../model/models/Model';
+import {ModelType} from "../../model/types/ModelType";
 
 export type ModelNotInitializedErrorOptions = { cause: string } | { accessedPropertyKey: string };
 
@@ -6,7 +6,7 @@ export class ModelNotInitializedError extends Error {
 
   message: string;
 
-  constructor(modelClass: typeof Model,
+  constructor(modelClass: ModelType<any>,
               options: ModelNotInitializedErrorOptions) {
     /* istanbul ignore next */
     super();

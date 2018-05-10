@@ -9,3 +9,7 @@ export {ISequelizeValidationOnlyOptions} from './interfaces/ISequelizeValidation
 
 // models
 export {Sequelize} from './models/Sequelize';
+
+// types
+export {Repository} from './types/Repository';
+export {SequelizeOptions} from './types/SequelizeOptions';

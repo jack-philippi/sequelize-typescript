@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import {addOptions, setModelName} from '../models';
 import {IDefineOptions} from "../interfaces/IDefineOptions";
-import {ModelImpl} from '../models/ModelImpl';
+import {ModelType} from "../types/ModelType";
 
 export function Table(options: IDefineOptions): Function;
 export function Table(target: any): void;
@@ -15,7 +15,7 @@ export function Table(arg: any): void|Function {
   }
 }
 
-function annotate(target: typeof ModelImpl, options: IDefineOptions = {}): void {
+function annotate(target: ModelType<any>, options: IDefineOptions = {}): void {
   options.instanceMethods = target.prototype;
   options.classMethods = target;
 

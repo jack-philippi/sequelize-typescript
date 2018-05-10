@@ -1,6 +1,6 @@
-import {Model} from "../models/Model";
 import {IIncludeAssociation} from "./IIncludeAssociation";
 import {IBaseIncludeOptions} from "./IBaseIncludeOptions";
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "IncludeOptions" type definitions from:
@@ -15,7 +15,7 @@ export interface IIncludeOptions extends IBaseIncludeOptions {
   /**
    * The model you want to eagerly load
    */
-  model?: typeof Model;
+  model?: ModelType<any>;
 
   /**
    * The association you want to eagerly load. (This can be used instead of providing a model/as pair)
@@ -25,7 +25,7 @@ export interface IIncludeOptions extends IBaseIncludeOptions {
   /**
    * Load further nested related models
    */
-  include?: Array<typeof Model | IIncludeOptions>;
+  include?: Array<ModelType<any> | IIncludeOptions>;
 
   /**
    * If true, only non-deleted records will be returned. If false, both deleted and non-deleted records will

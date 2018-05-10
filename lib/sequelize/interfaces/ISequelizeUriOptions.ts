@@ -1,17 +1,11 @@
-import {Options} from 'sequelize';
-import {Model} from '../../model/models/Model';
+import {IBaseSequelizeOptions} from "./IBaseSequelizeOptions";
 
-export interface ISequelizeUriOptions extends Options {
+export interface ISequelizeUriOptions extends IBaseSequelizeOptions {
 
   /**
    * Uri connection string to database
    */
   url: string;
-
-  /**
-   * Path to models, which should be loaded
-   */
-  models?: string[] | Array<typeof Model>;
 
   /**
    * Makes it possible to use sequelize for validation only

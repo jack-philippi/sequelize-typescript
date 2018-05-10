@@ -1,4 +1,4 @@
-import {Model} from "../models/Model";
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "IncludeAssociation" type definitions from:
@@ -9,7 +9,7 @@ import {Model} from "../models/Model";
  * Association Object for Include Options
  */
 export interface IIncludeAssociation {
-  source: typeof Model;
-  target: typeof Model;
+  source: ModelType<any>;
+  target: ModelType<any>;
   identifier: string;
 }

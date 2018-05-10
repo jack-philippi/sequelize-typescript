@@ -1,10 +1,7 @@
-import {
-  WhereOptions, LoggingOptions, SearchPathOptions, col,
-  literal, fn, and, or, where
-} from 'sequelize';
-import {Model} from "../models/Model";
+import {and, col, fn, literal, LoggingOptions, or, SearchPathOptions, where, WhereOptions} from 'sequelize';
 import {IIncludeOptions} from "./IIncludeOptions";
 import {IFindOptionsAttributesArray} from '../../shared/IFindOptionsAttributesArray';
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "FindOptions" type definitions from:
@@ -41,7 +38,7 @@ export interface IFindOptions<T> extends LoggingOptions, SearchPathOptions {
    * If your association are set up with an `as` (eg. `X.hasMany(Y, { as: 'Z }`, you need to specify Z in
    * the as attribute when eager loading Y).
    */
-  include?: Array<typeof Model | IIncludeOptions>;
+  include?: Array<ModelType<any> | IIncludeOptions>;
 
   /**
    * Specifies an ordering. If a string is provided, it will be escaped. Using an array, you can provide
@@ -49,8 +46,8 @@ export interface IFindOptions<T> extends LoggingOptions, SearchPathOptions {
    * first element is the column / function to order by, the second is the direction. For example:
    * `order: [['name', 'DESC']]`. In this way the column will be escaped, but the direction will not.
    */
-  order?: string | col | fn | literal | Array<string | number | typeof Model | { model: typeof Model, as?: string }> |
-    Array<string | col | fn | literal | Array<string | number | typeof Model | { model: typeof Model, as?: string }>>;
+  order?: string | col | fn | literal | Array<string | number | ModelType<any> | { model: ModelType<any>, as?: string }> |
+    Array<string | col | fn | literal | Array<string | number | ModelType<any> | { model: ModelType<any>, as?: string }>>;
 
   /**
    * Limit the results
@@ -67,7 +64,7 @@ export interface IFindOptions<T> extends LoggingOptions, SearchPathOptions {
    * Postgres also supports transaction.LOCK.KEY_SHARE, transaction.LOCK.NO_KEY_UPDATE and specific model
    * locks with joins. See [transaction.LOCK for an example](transaction#lock)
    */
-  lock?: string | { level: string, of: typeof Model };
+  lock?: string | { level: string, of: ModelType<any> };
 
   /**
    * Return raw result. See sequelize.query for more information.

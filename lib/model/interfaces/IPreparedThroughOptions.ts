@@ -1,5 +1,5 @@
 import {AssociationScope} from 'sequelize';
-import {Model} from '../models/Model';
+import {ModelType} from "../types/ModelType";
 
 /**
  * Based on "ThroughOptions" type definitions from:
@@ -16,7 +16,7 @@ export interface IPreparedThroughOptions {
   /**
    * The model used to join both sides of the N:M association.
    */
-  model: typeof Model;
+  model: ModelType<any>;
 
   /**
    * A key/value set that will be used for association create and find defaults on the through model.

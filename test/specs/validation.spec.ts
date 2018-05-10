@@ -346,7 +346,7 @@ describe('validation', () => {
 
         const VALID_NAME = 'bob';
         const ERROR_MESSAGE = `Invalid name: Only '${VALID_NAME}' is valid`;
-        const _sequelize = createSequelize({modelPaths: []});
+        const _sequelize = createSequelize({models: []});
 
         @Table
         class User extends Model<User> {
@@ -381,7 +381,7 @@ describe('validation', () => {
         const NAME_ERROR_MESSAGE = `Invalid name: Only '${VALID_NAME}' is valid`;
         const VALID_AGE = 99;
         const AGE_ERROR_MESSAGE = `Invalid age: Only '${VALID_AGE}' is valid`;
-        const _sequelize = createSequelize({modelPaths: []});
+        const _sequelize = createSequelize({models: []});
 
         @Table
         class User extends Model<User> {

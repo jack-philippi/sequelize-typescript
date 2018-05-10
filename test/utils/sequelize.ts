@@ -25,7 +25,7 @@ export function createSequelize(useModelsInPathOrPartialOptions?: boolean | Part
     define,
     storage: ':memory:',
     logging: !('SEQ_SILENT' in process.env),
-    modelPaths: useModelsInPath ? [__dirname + '/../models'] : [],
+    models: useModelsInPath ? [__dirname + '/../models'] : [],
     ...partialOptions,
   });
 }
@@ -49,7 +49,7 @@ export function createSequelizeFromUri(useModelsInPath: boolean = true): Sequeli
 export function createSequelizeFromUriObject(useModelsInPath: boolean = true): Sequelize {
   return new Sequelize({
     url: 'sqlite://',
-    modelPaths: useModelsInPath ? [__dirname + '/../models'] : []
+    models: useModelsInPath ? [__dirname + '/../models'] : []
   });
 }
 

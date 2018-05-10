@@ -33,11 +33,11 @@ import {IFindCreateFindOptions} from "../interfaces/IFindCreateFindOptions";
 import {ICountOptions} from '../interfaces/ICountOptions';
 import {IPartialDefineAttributeColumnOptions} from "../interfaces/IPartialDefineAttributeColumnOptions";
 import {FilteredModelAttributes} from '../types/FilteredModelAttributes';
-import {NonAbstractTypeOfModel} from '../types/NonAbstractTypeOfModel';
 import {Hooks} from '../../hooks/models/Hooks';
 import {FilteredModelAttributeKeys} from '../types/FilteredModelAttributeKeys';
 import {IAssociationGetOptions} from '../interfaces/IAssociationGetOptions';
 import {IAssociationCountOptions} from '../interfaces/IAssociationCountOptions';
+import {ModelType} from "../types/ModelType";
 
 /* tslint:disable:array-type */
 /* tslint:disable:max-line-length */
@@ -184,8 +184,8 @@ export declare abstract class Model<T extends Model<T>> extends Hooks {
    * @return Model A reference to the model, with the scope(s) applied. Calling scope again on the returned
    *     model will clear the previous scope.
    */
-  static scope<T>(this: NonAbstractTypeOfModel<T>, options?: string | string[] | ScopeOptions | WhereOptions<any>): NonAbstractTypeOfModel<T>;
-  static scope<T>(this: NonAbstractTypeOfModel<T>, ...scopes: (string | ScopeOptions | WhereOptions<any>)[]): NonAbstractTypeOfModel<T>;
+  static scope<T extends Model<T>>(this: ModelType<T>, options?: string | string[] | ScopeOptions | WhereOptions<any>): ModelType<T>;
+  static scope<T extends Model<T>>(this: ModelType<T>, ...scopes: (string | ScopeOptions | WhereOptions<any>)[]): ModelType<T>;
 
   /**
    * Search for multiple instances.
@@ -473,7 +473,7 @@ export declare abstract class Model<T extends Model<T>> extends Hooks {
   /**
    * Unscope the model
    */
-  static unscoped<T>(this: NonAbstractTypeOfModel<T>): NonAbstractTypeOfModel<T>;
+  static unscoped<T extends Model<T>>(this: ModelType<T>): ModelType<T>;
 
   /**
    * A reference to the sequelize instance
