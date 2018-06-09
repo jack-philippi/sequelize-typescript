@@ -48,9 +48,9 @@ import {ModelType} from "../types/ModelType";
  * https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/sequelize/index.d.ts#L2791
  */
 
-export declare abstract class Model<T extends Model<T>> extends Hooks {
+export declare abstract class Model<M extends Model<M>> extends Hooks {
 
-  constructor(values?: FilteredModelAttributes<T>, options?: IBuildOptions);
+  constructor(values?: FilteredModelAttributes<M>, options?: IBuildOptions);
 
   /**
    * List of primary key attribute names
@@ -731,12 +731,12 @@ export declare abstract class Model<T extends Model<T>> extends Hooks {
   /**
    * Check whether all values of this and `other` Instance are the same
    */
-  equals(other: Model<T>): boolean;
+  equals(other: Model<this>): boolean;
 
   /**
    * Check if this is eqaul to one of `others` by calling equals
    */
-  equalsOneOf(others: Model<T>[]): boolean;
+  equalsOneOf(others: Model<this>[]): boolean;
 
   /**
    * Convert the instance to a JSON representation. Proxies to calling `get` with no keys. This means get all

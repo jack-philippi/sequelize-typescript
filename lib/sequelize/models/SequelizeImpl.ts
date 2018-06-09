@@ -36,7 +36,6 @@ export class SequelizeImpl extends _OriginSequelize {
     this.models = {};
 
     if (typeof options !== "string") {
-      this.repositoryMode = !!options.repositoryMode;
       this.init(options);
     } else {
       this.repositoryMode = false;
@@ -44,6 +43,8 @@ export class SequelizeImpl extends _OriginSequelize {
   }
 
   init(options: SequelizeOptions): void {
+    this.repositoryMode = !!options.repositoryMode;
+    if (this.repositoryMode) this.repositories = new Map<ModelType<any>, Repository<any>>();
     if (options.models) this.addModels(options.models);
   }
 

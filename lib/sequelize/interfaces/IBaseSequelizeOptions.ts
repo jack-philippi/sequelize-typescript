@@ -9,7 +9,7 @@ export interface IBaseSequelizeOptions extends Options {
   repositoryMode?: boolean;
 
   /**
-   * Path to models, which should be loaded
+   * Path to models, which should be loaded or model class references
    */
   models?: string[] | Array<ModelType<any>>;
 }

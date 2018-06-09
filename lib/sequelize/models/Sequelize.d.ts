@@ -52,6 +52,7 @@ import {Namespace} from 'continuation-local-storage';
 import {Hooks} from '../../hooks/models/Hooks';
 import {IQueryOptions} from '../interfaces/IQueryOptions';
 import {ModelType} from "../../model/types/ModelType";
+import {Repository} from "../types/Repository";
 
 /**
  * Based on "Sequelize" type definitions from:
@@ -655,4 +656,9 @@ export declare class Sequelize extends Hooks {
    */
   addModels(models: Array<ModelType<any>>): void;
   addModels(modelPaths: string[]): void;
+
+  /**
+   * Returns repository from given model class reference.
+   */
+  getRepository<T extends Model<T>>(modelClass: ModelType<T>): Repository<T>;
 }
